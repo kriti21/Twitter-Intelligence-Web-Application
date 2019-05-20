@@ -1,5 +1,55 @@
 # Twitter-Intelligence-Web-Application
 
+## Directory Structure for the project
+
+    Twitter-Intelligence-Web-Application
+    
+    _pycache__/
+    analyzetweets.py
+    assets/
+        README.md
+    charts/
+        -bar1.js
+        -horizBar.js
+        -linechart2.js
+        -linechart3.js
+        -wordcloud.j
+    favicon.ico
+    gramex.yaml
+    index.html
+    js/
+        -common.js
+        -filter-template.js
+        -README.md
+        -tweetRender.js
+        -vegaMain.js
+    ktr_dashboard.py
+    modi.css
+    package.json
+    README.md
+    scaff.html
+    setup.sh*
+    static/
+        -ktr-jpg
+        -modi.jpg
+        -Preloader_.gif
+    style.css
+    templates/
+        -favcount.html
+        -filters.html
+        -topsection.html
+        -tweetcount.html
+    test/
+        -gramextest.yaml
+    tweetscraper.py
+    twitterdata.db
+
+## File and function details
+
+The gramex configuration is controlled by the file  `gramex.yaml`. For details on how to configure the app, read https://learn.gramener.com/guide/
+
+The twitter scraper code is in `tweetscraper.py` and the collected tweets are analyzed using pandas in `analyzetweets.py` file. 
+
 ## Steps to set up locally
 
 1. Install the following dependencies in your system
