@@ -5,7 +5,6 @@
 1. Install the following dependencies in your system
     - Anaconda 5.2.0 or later
     - Install node.js 8 or later
-    - On a Mac, install Xcode
 
 2. Make sure your system has latest python and pip installed
 
