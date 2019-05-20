@@ -1,0 +1,8 @@
+<div id="filterHook">
+    <% _.each(data, function(d) {%>
+        <a href="<%= d.aggtime ? '?aggtime=Year' : '?user=KTR' %>" style="font-size: 15px" id="just-tooltip" data-toggle="tooltip" title="Remove this filter" class="mb-5 urlfilter badge badge-danger round" data-target="#" data-mode="del"><%= d.aggtime ? 'Aggregate-Time: Year' : 'User: KTR' %></a>
+    <%}) %>
+<% if(data.length>0) { %>
+<a class="circler urlfilter mb-5" href="#" onclick="hashNun(event)"  data-target="#" id="another-tooltip" data-toggle="tooltip" title="Remove all filters" data-mode="del"><i class='fa fa-times-circle fa-lg' aria-hidden='true'></i></a>
+<% } %>
+</div>

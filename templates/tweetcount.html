@@ -1,0 +1,12 @@
+<h6 class="card-text text-black-50">
+    The number of tweets by <%=(data.user) ? 'KTR' : 'Narendra Modi'%> in <%= (data.time) ? 'an year' : 'a month' %>
+ </h6>
+ <div class="card-text">
+    <i>
+       <%=(data.user) ? 'KTR' : 'Prime Minister Narendra Modi'%> has <h5 style="display:inline" class="text-color6">tweeted</h5>
+       <strong>
+          <h1 class="text-danger" style="display:inline"><%=data.count%></h1>
+       </strong>
+       times in <%=(data.time) ? data.date : data.month+' '+data.date.substring(0,4) %>
+    </i>
+ </div>

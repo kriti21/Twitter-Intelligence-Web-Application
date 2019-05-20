@@ -1,0 +1,31 @@
+#preloader {
+    background: url('./static/Preloader_3.gif') no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+}
+
+.fa-twitter {
+    color: dodgerblue
+}
+.btn-primary{
+    margin-left:2rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+img.rounded {
+    max-width: 110px;
+}
+
+#like, #ret {
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+.h-80{
+    height:80% !important
+}

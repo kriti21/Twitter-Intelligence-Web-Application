@@ -1,0 +1,15 @@
+validate:
+  script:
+    - flake8
+    - eslint --ext js,html .
+
+deploy:
+  stage: deploy
+  script: deploy
+  only: [kb1]
+  variables:
+    SERVER: ubuntu@uat.gramener.com
+    URL: ktr
+    SETUP: bash setup.sh
+    VERSION: py3v1
+    PORT: 8010

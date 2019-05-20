@@ -1,0 +1,86 @@
+import:
+  ui:
+    path: $GRAMEXAPPS/ui/gramex.yaml # Import the UI components
+    YAMLURL: $YAMLURL/ui/
+
+app:
+  listen:
+    port: 8080
+  settings:
+    auth: true
+    autoreload: false
+    debug: false
+    xsrf_cookies: false
+
+email:
+  email-test:
+    type: gmail
+    email: gramex.guide@gmail.com
+    password: tlpmupxnhucitpte
+    stub: log
+
+url:
+  ktr-getinfo:
+    pattern: /$YAMLURL/getinfo
+    handler: FunctionHandler
+    kwargs:
+      function: tweetscraper.main1
+
+  ktr-template1:
+    pattern: /$YAMLURL/
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/index.html
+      template: true
+    
+  ktr-template2:
+    pattern: /$YAMLURL/newuser
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/scaff.html
+      template: true
+
+  ktr-uniqueusers:
+    pattern: /$YAMLURL/user_name
+    handler: FormHandler
+    kwargs:
+      url: sqlite:///$YAMLPATH/twitterdata.db
+      table: aggtweets
+
+  ktr-formhandler1:
+    pattern: /$YAMLURL/analysis
+    handler: FormHandler
+    kwargs:
+      url: sqlite:///$YAMLPATH/twitterdata.db
+      table: tweets
+      queryfunction: analyzetweets.tweet_query(args)
+      modify: analyzetweets.draw_cards(handler, data)
+      headers:
+        Access-Control-Allow-Origin: "*"
+      default:
+        col: created_date
+
+  ktr-formhandler2:
+    pattern: /$YAMLURL/analysis2
+    handler: FormHandler
+    kwargs:
+      url: sqlite:///$YAMLPATH/twitterdata.db
+      table: aggtweets
+      queryfunction: analyzetweets.aggregate_tweet_query(args)
+      modify: analyzetweets.draw_charts(handler, data)
+      headers:
+        Access-Control-Allow-Origin: "*"
+      default:
+        col: created_date
+
+schedule:
+  run-every-day:
+    function: tweetscraper.run_scheduler()
+    minutes: 0
+    hours: 0
+    dates: "*"
+
+test:
+  auth:
+    user: ktr
+    password: ktr

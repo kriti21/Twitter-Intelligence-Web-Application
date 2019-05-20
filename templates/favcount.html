@@ -1,0 +1,17 @@
+<div class="card shadow bg-primary pb-5 pt-3 w-100 mb-5 h-80">
+    <div class="card-body">
+        <h4 class="card-title text-white">Favorite Count</h4>
+        <h6 class="card-text text-white-50 mt-4">
+                The number of times <%=(data.user) ? "KTR's" : "Narendra Modi's"%> tweets have been favorited in <%= (data.time) ? 'an year' : 'a month' %>
+             </h6>
+             <div class="card-text text-white mt-4">
+                <i>
+                   Mr. <%=(data.user) ? "KTR's" : "Modi's"%> tweets have been <h4 style="display:inline">favorited</h4>
+                   <strong>
+                      <h1 class="text-color2" style="display:inline"><%=data.count%></h1>
+                   </strong>
+                   times in <%=(data.time) ? data.date : data.month+' '+data.date.substring(0,4) %>
+                </i>
+             </div>
+    </div>
+</div>

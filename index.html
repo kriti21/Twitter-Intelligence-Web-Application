@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Twitter Analysis</title>
+   <link rel="stylesheet"
+      href="ui/bootstraptheme.css?primary=%2338a1f3&secondary=%23f5b478&color2=%23ffc107&color6=%23006aa4" />
+   <link rel="stylesheet" href="modi.css">
+   <link rel="stylesheet" href="ui/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+   <!-- Preloader -->
+   <div id="preloader"></div>
+   <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+      <a class="navbar-brand" href="?"><i class="fa fa-twitter fa-2x"></i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <a class="navbar-brand" href="#">KTR Dashboard</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="nav navbar-nav navbar-right ml-auto">
+            <li class="nav-item pl-auto">
+               <a href='newuser'>
+                  <button type="button" class="btn btn-info">Get Tweets for new user</button>
+               </a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+   <!-- Navbar end -->
+   <div class="container mt-5">
+      <script type="text/html" id="filter_breadcrumb" src="templates/filters.html"></script>
+      <select class="selectpicker">
+         <a class="urlfilter" href="?user=KTR" data-mode="del" data-target="#">
+            <option value="Narendra%20Modi">Narendra Modi</option>
+         </a>
+         <a class="urlfilter" href="?user=KTR" data-mode="toggle" data-target="#">
+            <option value="Narendra%20Modi">KTR</option>
+         </a>
+      </select>
+      <script type="text/html" id="topsection" src="templates/topsection.html"></script>
+      <div class="row mt-3" id="firstone">
+         <div class="col">
+            <div class="card">
+               <div class="card-header">
+                  <div class="pull-left">
+                     <div class="mt-2">
+                        <h3>Tweet Count</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body">
+                  <div class="d-flex justify-content-between pt-1 pb-1 pl-1">
+                     <div class="d-flex flex-wrap col-7 px-0">
+                        <script type="text/html" id="tweetct" src="templates/tweetcount.html"></script>
+                     </div>
+                     <div class="d-flex mt-1 mr-1 btn-group" role="group" aria-label="Basic example">
+                        <a class="urlfilter" href="?aggtime=Year" data-target="#" data-mode="del"><button type="button"
+                              class="btn btn-primary">Month</button></a>
+                        <a class="urlfilter" href="?aggtime=Year" data-target="#" data-mode="toggle"><button
+                              type="button" class="btn btn-primary">Year</button></a>
+                     </div>
+                  </div>
+                  <div id="chart1" class="w-100 ml-5 mt-2 mb-2">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Panel ends -->
+      <div class="row mt-5">
+         <div class="col-md-6 col-xs-6">
+            <div class="card shadow">
+               <div class="card-body pl-5 pr-5 pt-2 pb-2" id="like">
+                  <h4 class="card-title text-dark text-center bg-light">5 Most Favorited Tweets</h4>
+                  <div class="card-text" id="tweetlike1"></div>
+               </div>
+               <!-- .card-body -->
+            </div>
+            <!-- .card -->
+         </div>
+         <div class="col-md-6 col-xs-6">
+            <div class="card shadow">
+               <div class="card-body pl-5 pr-5 pt-2 pb-2" id="ret">
+                  <h4 class="card-title text-dark text-center bg-light">5 Most Retweeted Tweets</h4>
+                  <div class="card-text" id="retweet1"></div>
+               </div>
+               <!-- .card-body -->
+            </div>
+            <!-- .card -->
+         </div>
+      </div>
+      <!-- Row ends -->
+      <div class="divider border-dark"><i class="fa fa-2x fa-twitter mr-2"></i></div>
+      <div class="row mt-3" id="firstone">
+         <div class="col">
+            <div class="card">
+               <div class="card-header">
+                  <div class="pull-left">
+                     <div class="mt-2">
+                        <h3>Favorite Count</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body">
+                  <div id="chart2" class="w-100 ml-5 mt-2 mb-2">
+                  </div>
+               </div>
+               <!-- <div class="row mt-5">
+                     <div class="col-md-4 col-xs-4 pl-5">
+                        <script type="text/html" id="favct" src="templates/favcount.html"></script>
+                     </div>
+                     <div class="card-body col-md-8 col-xs-8">
+                        <div id="chart2"></div>
+                     </div>
+                  </div> -->
+            </div>
+         </div>
+      </div>
+      <!-- Row ends -->
+      <div class="divider border-primary"></div>
+      <div class="row mt-3" id="firstone">
+         <div class="col">
+            <div class="card">
+               <div class="card-header">
+                  <div class="pull-left">
+                     <div class="mt-2">
+                        <h3>Retweet Count</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body">
+                  <div id="chart3" class="w-100 ml-5 mt-2 mb-2">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Row ends -->
+      <div class="divider border-primary"></div>
+      <div class="row mt-3" id="firstone">
+         <div class="col">
+            <div class="card">
+               <div class="card-header">
+                  <div class="pull-left">
+                     <div class="mt-2">
+                        <h3>Engagement Score</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="card-body">
+                  <div id="chart4" class="w-100 ml-5 mt-2 mb-2">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="divider border-primary"></div>
+      <div class="row mt-3" id="firstone">
+         <div class="col">
+            <div class="card">
+               <div class="card-header">
+                  <div class="pull-left">
+                     <div class="mt-2">
+                        <h3>Wordcloud</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="row mt-2">
+                  <div class="col-md-2"></div>
+                  <div class="card-body col-md-8">
+                     <div id="wordcloud"></div>
+                  </div>
+                  <div class="col-md-2"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Row ends -->
+      <section>
+         <div id="cross"></div>
+      </section>
+      <footer>
+         <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+               made with <i class="fa fa-heart text-danger"></i> @ Gramener
+            </a>
+         </nav>
+      </footer>
+   </div>
+</body>
+
+<script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="ui/jquery/dist/jquery.min.js"></script>
+<script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="ui/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="ui/lodash/lodash.min.js"></script>
+<script src="node_modules/g1/dist/g1.min.js"></script>
+<script src="node_modules/vega/build/vega.min.js"></script>
+<script src="node_modules/numeral/numeral.js"></script>
+<script src="ui/vega-tooltip/build/vega-tooltip.min.js"></script>
+<script src="./charts/bar1.js"></script>
+<script src="./charts/horizBar.js"></script>
+<script src="./charts/linechart2.js"></script>
+<script src="./charts/linechart3.js"></script>
+<script src="./js/tweetRender.js"></script>
+<script src="charts/wordcloud.js"></script>
+<script src="charts/bar1.js"></script>
+<script src="charts/horizBar.js"></script>
+<script src="charts/linechart2.js"></script>
+<script src="charts/linechart3.js"></script>
+<script src="js/vegaMain.js"></script>
+<script src="js/filter-template.js"></script>
+<script src="https://d3js.org/d3-format.v1.min.js"></script>
+<link rel="stylesheet" href="ui/bootstrap-select/dist/css/bootstrap-select.min.css">
+<script src="js/common.js"></script>
+
+</html>
